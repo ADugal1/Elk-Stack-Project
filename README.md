@@ -2,7 +2,7 @@
 The files in this repository were used to configure the network depicted below.
 ## Automated ELK Stack Deployment
 
-![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
+(https://richmond.bootcampcontent.com/Richmond-Boot-Camp/ur-rich-cyber-pt-10-2020-u-c/blob/master/%2013-Elk-Stack-Project/Activities/Stu_Day_1/Resources/install-elk.yml)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
