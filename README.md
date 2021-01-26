@@ -5,7 +5,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-The ansible-playbooks [elk.yml] (https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_1_Resources_install-elk.yml) and the [filebeat-playbook.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_2_Resources_filebeat-config.yml) are needed to create and implement the Elk-Server
+The ansible-playbooks [elk.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_1_Resources_install-elk.yml) and the [filebeat-playbook.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_2_Resources_filebeat-config.yml) are needed to create and implement the Elk-Server
 
 This document contains the following details:
 - Description of the Topology
@@ -64,7 +64,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 The playbook implements the following tasks:
 - Create a New VM (should be named something simple "Elk-Server") Keep note of the Private IP (10.0.0.11) and the Public IP (0.0.0.0) you will need the Private IP to SSH into the VM and the Public IP to connect to the Kibana Portal (HTTP Site) to view all Metrics/Syslogs.
-- Download and Configure the "elk-docker" container "In the hosts.conf you will need to add a new group [elkservers] and the Private IP (10.1.0.4) to the group. Then you need to create a new ansible-playbook (elk.yml) that will download, install, configures the "Elk-Server" to map the following ports [5601,9200,5044], and starts the contain
+- Download and Configure the "elk-docker" container "In the hosts.conf you will need to add a new group [elkservers] and the Private IP (10.1.0.4) to the group. Then you need to create a new ansible-playbook [elk.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_1_Resources_install-elk.yml) that will download, install, configures the "Elk-Server" to map the following ports [5601,9200,5044], and starts the contain
 - Launch and expose the container "After installing and starting the new container. You can verify that the container is up and running by SSHing into the container from your JumpBox. Once you are in the [Elk-Server] run the command [sudo docker ps]
 - Create new Inbound Security Rules to allow Ports: 5601 and 9200 "The Inbound Security Rules should allow access from your Personal Network"
 - Open a new browser and type in the [Public IP:5601] to access the Kibana Portal Site
@@ -89,10 +89,10 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the filebeat.yml and metricbeat.yml file to the /etc/ansible/roles/files/ directory.
+- Copy the [filebeat.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/filebeat-config.yml) and [metricbeat.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/metricbeat.yml) file to the /etc/ansible/roles/files/ directory.
 - Update the configuration files to include the Private IP of the Elk-Server to the ElasticSearch and Kibana sections of the configuration file.
-- Create a new ansible-playbook filebeat-playbook.yml in the /etc/ansible/roles/ directory that will install, drop in the filebeat.yml and metricbeat.yml files from the /etc/ansible/roles/files/ directory, uodate the configuration files, and start the service for both Filebeat and Metricbeat.
+- Create a new ansible-playbook  [filebeat-playbook.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_2_Resources_filebeat-config.yml) in the /etc/ansible/roles/ directory that will install, drop in the filebeat.yml and metricbeat.yml files from the /etc/ansible/roles/files/ directory, uodate the configuration files, and start the service for both Filebeat and Metricbeat.
 - Run the playbook, and navigate to ELk-Server to check that the installation worked as expected. [docker ps]
 - The playbook is called filebeat-playbook.yml. You copy the file to the "/etc/ansible/hosts/" directory.
-- The file you need to update is the filebeat.yml file which is a configuration file that will be dropped into the Elk-Server during the run of the ansible-playbook. When you update the host.cfg file in the ansible directory you will need to create a new group called [elkservers] and add the Private IP of the Elk-Server to the group. Then when configuring the filebeat.yml file you need to designate the Private IP of the Elk-Server in two lines of the .yml file. Lines 1106 and 1806 are the needed to be updated with the Private IP.
+- The file you need to update is the [filebeat-playbook.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/_13-Elk-Stack-Project_Activities_Stu_Day_2_Resources_filebeat-config.yml) file which is a configuration file that will be dropped into the Elk-Server during the run of the ansible-playbook. When you update the host.cfg file in the ansible directory you will need to create a new group called [elkservers] and add the Private IP of the Elk-Server to the group. Then when configuring the [filebeat.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/filebeat-config.yml) and [metricbeat.yml](https://github.com/ADugal1/Elk-Stack-Project/blob/main/metricbeat.yml)  file you need to designate the Private IP of the Elk-Server in two lines of the .yml file. Lines 1106 and 1806 are the needed to be updated with the Private IP.
 - The URL to use to verify the Elk-Server is running is the Public IP (0.0.0.0:5601)
